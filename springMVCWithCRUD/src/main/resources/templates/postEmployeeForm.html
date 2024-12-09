@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <form th:action="@{/submitNewEmployee}" th:object="${employee}" method="POST">
+    <input th:type="text" id="firstName" th:field="*{firstName}" placeholder="Enter the first Name">
+    <input th:type="text" id="lastName" th:field="*{lastName}" placeholder="Enter the Last Name">
+    <input th:type="text" id="email" th:field="*{email}" placeholder="Enter the Email">
+    <button th:type="submit">Submit</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Employee</title>
+</head>
+<body>
+<form th:action="@{/updateEmployee}" method="POST">
+    <input type="hidden" th:field="*{employee.id}">
+    <input th:field="*{employee.firstName}" placeholder="Enter the first Name">
+    <input th:field="*{employee.lastName}" placeholder="Enter the Last Name">
+    <input th:field="*{employee.email}" placeholder="Enter the Email">
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
