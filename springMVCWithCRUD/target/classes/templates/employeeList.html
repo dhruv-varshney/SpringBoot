@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{/postEmployee}" th:text="Employee"></a>
+<div>
+    User : <span th:text="${username}"></span>
+    Role: <span th:text="${Role}"></span>
+</div>
+<table>
+    <tbody>
+    <thead>
+    <th th:text="FirstName"></th>
+    <th th:text="LastName"></th>
+    <th th:text="Email"></th>
+    <th th:text="Delete"></th>
+    </thead>
+    <tr th:each="employee:${employees}">
+        <td th:text="${employee.firstName}"></td>
+        <td th:text="${employee.lastName}"></td>
+        <td th:text="${employee.email}"></td>
+        <td sec:authorize="hasRole('ADMIN')">
+            <a th:href="@{/delete/{employee_id}(employee_id=${employee.id})}" th:text="delete"></a>
+        </td>
+        <td sec:authorize="hasAnyRole('ADMIN','MANAGER')">
+            <a th:href="@{/update/{employee_id}(employee_id=${employee.id})}" th:text="update"></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/logout}" sec:authorize="isAuthenticated()">Logout</a>
+</body>
+</html>
